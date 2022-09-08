@@ -1,0 +1,97 @@
+{
+	"camera" : 
+	{
+		"center" : "2.76231 2.07795 1.85258",
+		"eye" : "2.97568 2.83936 2.46474",
+		"up" : "0.00000 1.00000 0.00000"
+	},
+	"general" : 
+	{
+		"ambientcolor" : "0.30000 0.30000 0.30000",
+		"bloom" : true,
+		"bloomhdrfeather" : 0.1,
+		"bloomhdriterations" : 8,
+		"bloomhdrscatter" : 1.619,
+		"bloomhdrstrength" : 2.0,
+		"bloomhdrthreshold" : 1.0,
+		"bloomstrength" : 2.0,
+		"bloomthreshold" : 0.64999998,
+		"camerafade" : true,
+		"cameraparallax" : false,
+		"cameraparallaxamount" : 0.5,
+		"cameraparallaxdelay" : 0.1,
+		"cameraparallaxmouseinfluence" : 0.5,
+		"camerapreview" : true,
+		"camerashake" : false,
+		"camerashakeamplitude" : 0.5,
+		"camerashakeroughness" : 1.0,
+		"camerashakespeed" : 3.0,
+		"clearcolor" : "0.70000 0.70000 0.70000",
+		"clearenabled" : true,
+		"farz" : 10000.0,
+		"fov" : 50.0,
+		"hdr" : false,
+		"nearz" : 0.1,
+		"orthogonalprojection" : null,
+		"skylightcolor" : "0.30000 0.30000 0.30000",
+		"zoom" : 1.0
+	},
+	"objects" : 
+	[
+		{
+			"alignment" : "center",
+			"alpha" : 1.0,
+			"angles" : "0.00000 0.00000 0.00000",
+			"brightness" : 1.0,
+			"color" : "0.00000 0.00000 0.00000",
+			"colorBlendMode" : 0,
+			"copybackground" : true,
+			"id" : 18,
+			"image" : "models/util/solidlayer_depthtest.json",
+			"ledsource" : false,
+			"locktransforms" : false,
+			"name" : "Overseer",
+			"origin" : "0.00000 0.00000 0.00000",
+			"parallaxDepth" : "1.00000 1.00000",
+			"perspective" : false,
+			"scale" : "0.00000 0.00000 0.00000",
+			"size" : "0.00000 0.00000",
+			"solid" : true,
+			"visible" : 
+			{
+				"script" : "'use strict';\n\nconst TIME_BETWEEN_GEN = 0.2;\nvar timeCounter = 0.0;\n\nexport function init(value) {\n\tlet bp= thisScene.getInitialLayerConfig(\"cube\");\n\tshared = new Object({ blueprint: bp });\n\treturn value;\n}\n\nexport function update(value) {\n\ttimeCounter += engine.frametime;\n\tif (timeCounter >= TIME_BETWEEN_GEN) { \n\t\tlet blueprint = shared.blueprint;\n\t\t// random origin\n\t\tblueprint.origin.value = randomOrigin();\n\n\t\tthisScene.createLayer(blueprint);\n\t\ttimeCounter = 0.0;\n\t}\n\n\treturn value;\n}\n\n// Helper\nfunction randomOrigin() {\n\tlet x = Math.random();\n\tlet y = Math.random();\n\tlet z = Math.random();\n\treturn  x + \" \" + y + \" \" + z;\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*\nconst TIME_BETWEEN_GEN = 0.1;\nvar timeCounter = 0.0;\n\nexport function init(value) {\n\tlet bp = thisScene.getInitialLayerConfig(\"0\");\n\tshared = new Object({ blueprint: bp });\n\n\treturn value;\n}\n\nexport function update(value) {\n\ttimeCounter += engine.frametime;\n\n\tif (timeCounter >= TIME_BETWEEN_GEN) {\n\t\tlet blueprint = shared.blueprint;\n\t\tblueprint.origin.value = randomOrigin();\n\t\tthisScene.createLayer(blueprint);\n\t\ttimeCounter = 0.0;\n\t}\n\n\treturn value;\n}\n\n// Helper\nfunction randomOrigin() {\n\tlet x = randomWithNegative();\n\tlet y = Math.random();\n\tlet z = randomWithNegative();\n\treturn x + \" \" + y + \" \" + z; \n}\n\nfunction randomWithNegative() {\n\treturn (Math.random() - 0.5) * 2.0;\n}\n\n*/\n\n//bp.scale = \"0.05000 0.05000 0.05000\";\n/**\n * @param {Boolean} value - for property 'visible'\n * @return {Boolean} - update current property value\n */\n\n\n/**\n * @param {Boolean} value - for property 'visible'\n * @return {Boolean} - update current property value\n */\n\n",
+				"value" : true
+			}
+		},
+		{
+			"angles" : "0.00000 0.00000 0.00000",
+			"id" : 27,
+			"locktransforms" : false,
+			"model" : "models/cube/cube.mdl",
+			"name" : "cube",
+			"origin" : 
+			{
+				"script" : "'use strict';\n\nexport function init(value) {\n\tengine.setTimeout(function() { \n\t\tthisScene.destroyLayer(thisObject); \n\t}, 2000);\n\n\treturn value;\n}\n",
+				"value" : "0.00000 0.00000 0.00000"
+			},
+			"parallaxDepth" : "1.00000 1.00000",
+			"perspective" : false,
+			"scale" : "0.10000 0.10000 0.10000"
+		},
+		{
+			"angles" : "0.00000 0.00000 0.00000",
+			"color" : "1.00000 1.00000 1.00000",
+			"id" : 44,
+			"intensity" : 1.0,
+			"light" : "point",
+			"locktransforms" : false,
+			"name" : "",
+			"origin" : "0.00000 2.00000 1.50000",
+			"parallaxDepth" : "0.00000 0.00000",
+			"radius" : 5.0,
+			"scale" : "1.00000 1.00000 1.00000",
+			"visible" : true
+		}
+	],
+	"version" : 1
+}
